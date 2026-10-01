@@ -1,0 +1,48 @@
+@model List<Customers.Models.Customer>
+
+@{ ViewData["Title"] = "Customer"; }
+
+ 
+
+<h1>Products</h1>
+
+<a asp-action="Create" class="btn btn-primary mb-3">+ Add Customer</a>
+
+ 
+
+<table class="table table-bordered">
+
+    <thead>
+
+        <tr><th>Id</th><th>CustomerName</th><th>ContactName</th><th>Email</th><th>Phone</th><th>Address</th><th>City</th><th>State</th><th>ZipCode</th><th>Actions</th></tr>
+
+    </thead>
+
+    <tbody>
+
+        @foreach (var p in Model)
+
+        {
+            <tr>
+                <td>@p.Id</td>
+                <td>@p.CustomerName</td>
+                <td>@p.ContactName</td>
+                <td>@p.Email</td>
+                <td>@p.Phone</td>
+                <td>@p.Address</td>
+                <td>@p.City</td>
+                <td>@p.State</td>
+                <td>@p.ZipCode</td>
+
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@p.Id" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@p.Id" class="btn btn-sm btn-danger"
+                       onclick="return confirm('Delete this product?')">Delete</a>
+                </td>
+                </tr>
+        }
+
+    </tbody>
+
+</table>
